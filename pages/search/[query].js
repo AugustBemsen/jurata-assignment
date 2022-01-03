@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MdOutlineNavigateNext } from "react-icons/md";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@chakra-ui/react";
+import { MdLanguage, MdOutlineNavigateNext } from "react-icons/md";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+} from "@chakra-ui/react";
 import styles from "../../styles/Search.module.css";
 import Logo from "../../components/Logo/Logo";
 import SearchBox from "../../components/SearchBox/SearchBox";
-import { AiOutlineMenu } from "react-icons/ai";
 
 const Query = () => {
   // state to manage active language
@@ -39,8 +46,17 @@ const Query = () => {
             Gh
           </p>
         </div>
-        <AiOutlineMenu className={styles.navIcon} />
+        <Menu closeOnBlur>
+          <MenuButton>
+            <MdLanguage className={styles.navIcon} />
+          </MenuButton>
+          <MenuList>
+            <MenuItem>En</MenuItem>
+            <MenuItem>GH</MenuItem>
+          </MenuList>
+        </Menu>
       </div>
+      <SearchBox className={styles.mobileSearch} />
       <div className={styles.bread}>
         <Breadcrumb spacing="8px" separator={<MdOutlineNavigateNext />}>
           <BreadcrumbItem>

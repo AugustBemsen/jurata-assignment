@@ -52,6 +52,10 @@
 
 }
 
+.mobileSearch {
+    display: none;
+}
+
 .bread {
     padding: 2% 8%;
 }
@@ -112,7 +116,15 @@
 
     .navIcon {
         display: block;
-        font-size: 1.5rem;
+        font-size: 1.7rem;
         color: #fff;
+    }
+
+    .mobileSearch {
+        display: block;
+        width: 90%;
+        margin: auto;
+        margin-top: 1.4rem;
+
     }
 }
