@@ -17,6 +17,8 @@ a {
 
 :root {
   --background-gradient: linear-gradient(to right, #DDDDDF, #AEB0AF);
+  --green-color: #69c2b4;
+  --blue-color: rgb(77, 102, 147);
 }
 
 .css-1cw84h2 {
