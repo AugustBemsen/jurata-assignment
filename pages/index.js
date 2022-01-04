@@ -5,6 +5,7 @@ import SearchBox from "../components/SearchBox/SearchBox";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+
   return (
     <>
       <Head>

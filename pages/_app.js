@@ -1,12 +1,17 @@
 import "../styles/globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
-import Head from "next/head";
+import { ApolloProvider } from "@apollo/client";
+import { useApollo } from "../lib/apollo";
 
 function MyApp({ Component, pageProps }) {
+  const apolloClient = useApollo(pageProps.initialApolloState);
+
   return (
-    <ChakraProvider>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <ApolloProvider client={apolloClient}>
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </ApolloProvider>
   );
 }
 
