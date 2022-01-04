@@ -25,15 +25,6 @@ const Search = () => {
 
   const question = router.query.q;
 
-  // state to manage active language
-  const [activeLang, setActiveLang] = useState(1);
-
-  //   handle Active Language
-
-  const activeLangHandler = () => {
-    activeLang === 1 ? setActiveLang(2) : setActiveLang(1);
-  };
-
   // get answers
   const { data, loading, error } = useQuery(GetAnswers, {
     variables: { question: question },
@@ -44,7 +35,6 @@ const Search = () => {
   if (error || !data) return <h2>Error</h2>;
   if (data.length === 0) return <h2>404 | Not Found</h2>;
 
-
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -53,26 +43,26 @@ const Search = () => {
         </div>
         <SearchBox className={styles.inputField} />
         <div className={styles.languages}>
-          <p
-            className={activeLang === 1 ? styles.active : ""}
-            onClick={activeLangHandler}
-          >
-            En
-          </p>
-          <p
-            className={activeLang !== 1 ? styles.active : ""}
-            onClick={activeLangHandler}
-          >
-            Gh
-          </p>
+          {router.locales.map((local, i) => (
+            <Link href={router.asPath} locale={local} key={i + local}>
+              <a className={local === router.locale ? styles.active : ""}>
+                {local}
+              </a>
+            </Link>
+          ))}
         </div>
         <Menu closeOnBlur>
           <MenuButton>
             <MdLanguage className={styles.navIcon} />
           </MenuButton>
           <MenuList>
-            <MenuItem>En</MenuItem>
-            <MenuItem>GH</MenuItem>
+            {router.locales.map((local, i) => (
+              <MenuItem key={i + local}>
+                <Link href={router.asPath} locale={local}>
+                  <a>{local}</a>
+                </Link>
+              </MenuItem>
+            ))}
           </MenuList>
         </Menu>
       </div>
@@ -96,8 +86,8 @@ const Search = () => {
         <div className={styles.result_header}>
           <Image
             src={data?.answer?.image}
-            width={100}
-            height={30}
+            width={220}
+            height={220}
             alt="search"
           />
           <p>{question}</p>
