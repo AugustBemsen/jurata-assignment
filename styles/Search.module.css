@@ -41,7 +41,7 @@
     height: 100%;
     display: block;
     padding: 2rem;
-    border-bottom: 5px solid inherit;
+    border-bottom: 5px solid none;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     color: #fff;
