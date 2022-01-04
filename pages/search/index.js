@@ -116,7 +116,6 @@ const Search = () => {
 export default Search;
 
 export const getServerSideProps = async ({ query }) => {
-  console.log(query.q);
   const question = query.q;
   const apolloClient = initializeApollo();
   await apolloClient.query({
